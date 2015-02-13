@@ -24,6 +24,7 @@ apt-get install -y vim;
 apt-get install -y sublime-text;
 apt-get install -y dropbox;
 apt-get install -y git;
+apt-get install -y vagrant;
 
 
 exit 0;
