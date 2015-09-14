@@ -7,6 +7,7 @@ cp /etc/apt/sources.list /etc/apt/sources.list.cp;
 
 # Modification des dépots
 add-apt-repository "deb http://linux.dropbox.com/ubuntu trusty main";
+apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E;
 add-apt-repository "deb ppa:webupd8team/sublime-text-2";
 
 echo 'Mise à jour de la distribution';
@@ -23,6 +24,7 @@ apt-get install -y xpad;
 apt-get install -y vim;
 apt-get install -y sublime-text;
 apt-get install -y dropbox;
+apt-get install -y python-gpgme;
 apt-get install -y git;
 apt-get install -y vagrant;
 
