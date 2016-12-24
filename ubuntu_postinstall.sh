@@ -17,7 +17,7 @@ apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E; # Dropbox
 # -- 
 
 add-apt-repository "deb http://linux.dropbox.com/ubuntu trusty main";
-add-apt-repository "deb ppa:webupd8team/sublime-text-2";
+add-apt-repository "deb ppa:webupd8team/sublime-text-2"; +
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list;
 
 # -- 
@@ -35,15 +35,15 @@ apt-get update;
 echo 'Installation des logiciels';
 sleep 5s;
 
-apt-get install -y virtualbox;
-apt-get install -y chromium-browser;
-apt-get install -y xpad;
-apt-get install -y vim;
-apt-get install -y sublime-text;
 apt-get install -y dropbox;
 echo 'Connexion à Dropbox';
 sleep 5s;
 dropbox start -i;
+apt-get install -y virtualbox;
+apt-get install -y chromium-browser;
+apt-get install -y xpad;
+apt-get install -y vim;
+apt-get install -y sublime-text; +
 apt-get install -y python-gpgme;
 apt-get install -y git;
 apt-get install -y vagrant;
@@ -57,7 +57,7 @@ apt-get install -y libapache2-mod-php;
 apt-get install -y php-mysql;
 
 echo 'Attente de synchronisation de Dropbox';
-sleep 300s;
+sleep 1800s;
 
 # -- 
 # Git
@@ -79,10 +79,10 @@ git config --global user.email "dogooju@gmail.com";
 
 echo 'Installation de Dokuwiki';
 sleep 5s;
-cd ~/Download;
+cd /home/julien/Téléchargements;
 wget "https://download.dokuwiki.org/get?id=c5525093cf2c4f47e2e5d2439fe13964";
 cp -R dokuwiki /var/www/html;
-rsync ~/Dropbox/backup/ /var/www/html/;
+rsync /home/julien/Dropbox/backup/ /var/www/html/;
 chown -R www-data:www-data /var/www/html/dokuwiki;
 
 # -- 
@@ -90,9 +90,10 @@ chown -R www-data:www-data /var/www/html/dokuwiki;
 # -- 
 
 echo 'Configuration de Vagrant';
-mkdir ~/Vagrant/debian_jessie64;
-cd ~/Vagrant/debian_jessie64;
-vagrant init https://atlas.hashicorp.com/debian/boxes/jessie64;
+mkdir /home/julien/Vagrant;
+chmod -R 777 /home/julien/Vagrant;
+cd /home/julien/Vagrant;
+vagrant init debian/jessie64 https://atlas.hashicorp.com/debian/boxes/jessie64;
 vagrant up;
 
 # -- 
